@@ -1,25 +1,39 @@
 import { Dna, ChevronDown, GraduationCap, Microscope, FlaskConical, Activity, Code, Database, Terminal, FileSearch, Beaker, Users, FileText, Server } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Header() {
   const [certDropdown, setCertDropdown] = useState(false);
   const [companyDropdown, setCompanyDropdown] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<'biotechnology' | 'bioinformatics' | 'research' | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleCategoryClick = (category: 'biotechnology' | 'bioinformatics' | 'research') => {
     setSelectedCategory(category);
   };
 
   return (
-    <header className="bg-white shadow-sm">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-white shadow-md' 
+        : 'bg-white/10 backdrop-blur-md border-b border-white/20 shadow-lg'
+    }`}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <Dna className="w-8 h-8 text-teal-600" />
+            <Dna className={`w-8 h-8 transition-colors ${isScrolled ? 'text-teal-600' : 'text-white'}`} />
             <h1 className="text-2xl font-bold">
-              <span className="text-gray-900">Bio</span>
-              <span className="text-teal-600">tech</span>
+              <span className={`transition-colors ${isScrolled ? 'text-gray-900' : 'text-white'}`}>Bio</span>
+              <span className={`transition-colors ${isScrolled ? 'text-teal-600' : 'text-teal-300'}`}>tech</span>
             </h1>
           </Link>
           <div className="flex items-center gap-8">
@@ -31,7 +45,11 @@ function Header() {
                 setSelectedCategory(null);
               }}
             >
-              <div className="flex items-center gap-1 text-gray-700 hover:text-teal-600 cursor-pointer">
+              <div className={`flex items-center gap-1 cursor-pointer transition-colors ${
+                isScrolled 
+                  ? 'text-gray-700 hover:text-teal-600' 
+                  : 'text-white hover:text-teal-300'
+              }`}>
                 <span>Certification Program</span>
                 <ChevronDown className="w-4 h-4" />
               </div>
@@ -214,7 +232,11 @@ function Header() {
               onMouseEnter={() => setCompanyDropdown(true)}
               onMouseLeave={() => setCompanyDropdown(false)}
             >
-              <div className="flex items-center gap-1 text-gray-700 hover:text-teal-600 cursor-pointer">
+              <div className={`flex items-center gap-1 cursor-pointer transition-colors ${
+                isScrolled 
+                  ? 'text-gray-700 hover:text-teal-600' 
+                  : 'text-white hover:text-teal-300'
+              }`}>
                 <span>Company</span>
                 <ChevronDown className="w-4 h-4" />
               </div>
@@ -233,7 +255,11 @@ function Header() {
               )}
             </div>
 
-            <button className="bg-teal-500 hover:bg-teal-600 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+            <button className={`px-6 py-2 rounded-lg font-medium transition-all ${
+              isScrolled
+                ? 'bg-teal-500 hover:bg-teal-600 text-white'
+                : 'bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30'
+            }`}>
               Apply Here
             </button>
           </div>

@@ -1,14 +1,19 @@
 import { FlaskConical, Activity, Database } from 'lucide-react';
+import HeroSection from '../components/HeroSection';
 
 function ProteomicsPage() {
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Proteomics</h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Large-scale study of proteins and their functions
-        </p>
-      </div>
+    <main>
+      <HeroSection
+        title="Proteomics"
+        subtitle="Large-scale study of proteins and their functions"
+        badge={{
+          icon: <FlaskConical className="w-4 h-4 text-yellow-300" />,
+          text: "Proteomics Program"
+        }}
+      />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
       <div className="space-y-8">
         <div className="bg-white rounded-lg p-8 shadow-md">
@@ -80,6 +85,7 @@ function ProteomicsPage() {
               </li>
             </ul>
           </div>
+        </div>
         </div>
       </div>
     </main>

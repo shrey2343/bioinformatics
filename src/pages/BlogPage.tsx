@@ -1,4 +1,5 @@
-import { Calendar, User, ArrowRight } from 'lucide-react';
+import { Calendar, User, ArrowRight, BookOpen } from 'lucide-react';
+import HeroSection from '../components/HeroSection';
 
 function BlogPage() {
   const blogPosts = [
@@ -59,13 +60,17 @@ function BlogPage() {
   ];
 
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Blog</h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Stay updated with the latest insights, research, and trends in biotechnology and bioinformatics
-        </p>
-      </div>
+    <main>
+      <HeroSection
+        title="Blog"
+        subtitle="Stay updated with the latest insights, research, and trends in biotechnology and bioinformatics"
+        badge={{
+          icon: <BookOpen className="w-4 h-4 text-yellow-300" />,
+          text: "Latest Articles"
+        }}
+      />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogPosts.map((post) => (
@@ -100,6 +105,7 @@ function BlogPage() {
             </div>
           </article>
         ))}
+      </div>
       </div>
     </main>
   );

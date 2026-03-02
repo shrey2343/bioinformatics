@@ -1,14 +1,19 @@
 import { Terminal, Server, HardDrive } from 'lucide-react';
+import HeroSection from '../components/HeroSection';
 
 function LinuxBioinformaticsPage() {
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Linux-Based Bioinformatics Infrastructure</h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Building robust computational environments for bioinformatics workflows
-        </p>
-      </div>
+    <main>
+      <HeroSection
+        title="Linux-Based Bioinformatics Infrastructure"
+        subtitle="Building robust computational environments for bioinformatics workflows"
+        badge={{
+          icon: <Terminal className="w-4 h-4 text-yellow-300" />,
+          text: "Linux Infrastructure"
+        }}
+      />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
       <div className="space-y-8">
         <div className="bg-white rounded-lg p-8 shadow-md">
@@ -91,6 +96,7 @@ function LinuxBioinformaticsPage() {
             <div>conda create -n bioinfo python=3.9</div>
             <div>conda activate bioinfo</div>
           </div>
+        </div>
         </div>
       </div>
     </main>

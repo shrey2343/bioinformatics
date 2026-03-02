@@ -1,14 +1,15 @@
 import { Building2, Users, Target } from 'lucide-react';
+import HeroSection from '../components/HeroSection';
 
 function AboutPage() {
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">About Us</h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Learn about our story and our mission statement
-        </p>
-      </div>
+    <main>
+      <HeroSection
+        title="About Us"
+        subtitle="Learn about our story and our mission statement"
+      />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
       <div className="grid md:grid-cols-3 gap-8 mb-16">
         <div className="bg-white rounded-lg p-8 shadow-md text-center">
@@ -45,6 +46,7 @@ function AboutPage() {
           Today, we continue to innovate and inspire the next generation of 
           biotechnology professionals through comprehensive programs and hands-on experience.
         </p>
+      </div>
       </div>
     </main>
   );

@@ -1,14 +1,19 @@
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import HeroSection from '../components/HeroSection';
 
 function ContactPage() {
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Get in touch with our team. We're here to help you with your bioscience journey.
-        </p>
-      </div>
+    <main>
+      <HeroSection
+        title="Contact Us"
+        subtitle="Get in touch with our team. We're here to help you with your bioscience journey."
+        badge={{
+          icon: <Mail className="w-4 h-4 text-yellow-300" />,
+          text: "We're Here to Help"
+        }}
+      />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
       <div className="grid md:grid-cols-2 gap-12">
         {/* Contact Information */}
@@ -120,6 +125,7 @@ function ContactPage() {
             </button>
           </form>
         </div>
+      </div>
       </div>
     </main>
   );
