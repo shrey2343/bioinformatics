@@ -150,9 +150,9 @@ function LandingPage() {
                     </svg>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-gray-900">13 Lakhs+ Jobs</div>
+                    <div className="text-2xl font-bold text-gray-900">30 Lakhs+ Jobs</div>
                     <div className="text-xs text-gray-600 leading-tight max-w-[200px]">
-                      There will be 13 Lakh Jobs in Biotech by the time you graduate
+                      Projected 30 Lakh Jobs in Biotech by 2030
                     </div>
                   </div>
                 </div>
@@ -164,6 +164,10 @@ function LandingPage() {
                       <linearGradient id="curveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" stopColor="#14b8a6" stopOpacity="0.4"/>
                         <stop offset="100%" stopColor="#14b8a6" stopOpacity="0.05"/>
+                      </linearGradient>
+                      <linearGradient id="projectedGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.3"/>
+                        <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.05"/>
                       </linearGradient>
                       <clipPath id="revealClip">
                         <rect x="0" y="0" width="500" height="350">
@@ -180,26 +184,28 @@ function LandingPage() {
                     </defs>
                     
                     {/* Grid lines */}
-                    <line x1="60" y1="80" x2="460" y2="80" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="4,4"/>
-                    <line x1="60" y1="150" x2="460" y2="150" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="4,4"/>
-                    <line x1="60" y1="220" x2="460" y2="220" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="4,4"/>
+                    <line x1="60" y1="60" x2="460" y2="60" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="4,4"/>
+                    <line x1="60" y1="120" x2="460" y2="120" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="4,4"/>
+                    <line x1="60" y1="180" x2="460" y2="180" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="4,4"/>
+                    <line x1="60" y1="240" x2="460" y2="240" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="4,4"/>
                     <line x1="60" y1="290" x2="460" y2="290" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="4,4"/>
                     
                     {/* Y-axis */}
-                    <line x1="60" y1="60" x2="60" y2="290" stroke="#9ca3af" strokeWidth="2"/>
+                    <line x1="60" y1="40" x2="60" y2="290" stroke="#9ca3af" strokeWidth="2"/>
                     {/* X-axis */}
                     <line x1="60" y1="290" x2="460" y2="290" stroke="#9ca3af" strokeWidth="2"/>
                     
                     {/* Y-axis labels */}
                     <text x="45" y="295" fontSize="13" fill="#6b7280" textAnchor="end" fontWeight="500">1L</text>
-                    <text x="45" y="225" fontSize="13" fill="#6b7280" textAnchor="end" fontWeight="500">3L</text>
-                    <text x="45" y="155" fontSize="13" fill="#6b7280" textAnchor="end" fontWeight="500">5L</text>
-                    <text x="45" y="85" fontSize="13" fill="#6b7280" textAnchor="end" fontWeight="500">7L</text>
+                    <text x="45" y="245" fontSize="13" fill="#6b7280" textAnchor="end" fontWeight="500">5L</text>
+                    <text x="45" y="185" fontSize="13" fill="#6b7280" textAnchor="end" fontWeight="500">10L</text>
+                    <text x="45" y="125" fontSize="13" fill="#6b7280" textAnchor="end" fontWeight="500">20L</text>
+                    <text x="45" y="65" fontSize="13" fill="#6b7280" textAnchor="end" fontWeight="500">30L</text>
                     
                     <g clipPath="url(#revealClip)">
-                      {/* Smooth curve */}
+                      {/* Historical curve (2020-2025) */}
                       <path
-                        d="M 80 270 Q 180 240, 260 180 T 440 80"
+                        d="M 80 280 Q 150 265, 220 240 T 340 210"
                         fill="none"
                         stroke="#14b8a6"
                         strokeWidth="4"
@@ -207,31 +213,53 @@ function LandingPage() {
                         strokeLinejoin="round"
                       />
                       
-                      {/* Area under curve */}
+                      {/* Area under historical curve */}
                       <path
-                        d="M 80 270 Q 180 240, 260 180 T 440 80 L 440 290 L 80 290 Z"
+                        d="M 80 280 Q 150 265, 220 240 T 340 210 L 340 290 L 80 290 Z"
                         fill="url(#curveGradient)"
                       />
                       
+                      {/* Projected curve (2025-2030) - steeper rise */}
+                      <path
+                        d="M 340 210 Q 370 150, 400 90 T 440 50"
+                        fill="none"
+                        stroke="#8b5cf6"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeDasharray="8,6"
+                      />
+                      
+                      {/* Area under projected curve */}
+                      <path
+                        d="M 340 210 Q 370 150, 400 90 T 440 50 L 440 290 L 340 290 Z"
+                        fill="url(#projectedGradient)"
+                      />
+                      
                       {/* Data points */}
-                      <circle cx="80" cy="270" r="5" fill="#14b8a6" stroke="white" strokeWidth="2"/>
-                      <circle cx="260" cy="180" r="5" fill="#14b8a6" stroke="white" strokeWidth="2"/>
-                      <circle cx="440" cy="80" r="5" fill="#14b8a6" stroke="white" strokeWidth="2"/>
+                      <circle cx="80" cy="280" r="5" fill="#14b8a6" stroke="white" strokeWidth="2"/>
+                      <circle cx="220" cy="240" r="5" fill="#14b8a6" stroke="white" strokeWidth="2"/>
+                      <circle cx="340" cy="210" r="5" fill="#14b8a6" stroke="white" strokeWidth="2"/>
+                      <circle cx="440" cy="50" r="5" fill="#8b5cf6" stroke="white" strokeWidth="2"/>
                     </g>
                     
                     {/* X-axis labels */}
                     <text x="80" y="315" fontSize="13" fill="#6b7280" textAnchor="middle" fontWeight="500">2020</text>
-                    <text x="260" y="315" fontSize="13" fill="#6b7280" textAnchor="middle" fontWeight="500">2024</text>
-                    <text x="440" y="315" fontSize="13" fill="#6b7280" textAnchor="middle" fontWeight="500">2025</text>
+                    <text x="220" y="315" fontSize="13" fill="#6b7280" textAnchor="middle" fontWeight="500">2023</text>
+                    <text x="340" y="315" fontSize="13" fill="#6b7280" textAnchor="middle" fontWeight="500">2025</text>
+                    <text x="440" y="315" fontSize="13" fill="#8b5cf6" textAnchor="middle" fontWeight="600">2030*</text>
                     
                     {/* Axis labels */}
                     <text x="20" y="180" fontSize="11" fill="#9ca3af" textAnchor="middle" transform="rotate(-90 20 180)">Number of Jobs</text>
                     <text x="260" y="340" fontSize="11" fill="#9ca3af" textAnchor="middle">Year</text>
+                    
+                    {/* Legend */}
+                    <text x="380" y="25" fontSize="10" fill="#8b5cf6" textAnchor="start" fontWeight="500">* Projected</text>
                   </svg>
                 </div>
               </div>
               
-              <p className="text-xs text-gray-500 mt-4">Source: Microsoft Industry Report 2024</p>
+              <p className="text-xs text-gray-500 mt-4">Source: Microsoft Industry Report 2024 & Market Projections</p>
             </div>
 
             {/* Salary Comparison Card */}
@@ -252,7 +280,7 @@ function LandingPage() {
                     isStatsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
                   }`}>
                     <div className="flex items-baseline justify-center gap-1">
-                      <span className="text-2xl font-bold text-gray-900">₹2</span>
+                      <span className="text-2xl font-bold text-gray-900">₹4-6</span>
                       <span className="text-lg font-semibold text-gray-700">Lakhs</span>
                     </div>
                     <div className="text-[10px] text-gray-500 font-medium tracking-wide">PER ANNUM</div>
@@ -278,7 +306,7 @@ function LandingPage() {
                     isStatsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
                   }`}>
                     <div className="flex items-baseline justify-center gap-1">
-                      <span className="text-2xl font-bold text-gray-900">₹8</span>
+                      <span className="text-2xl font-bold text-gray-900">₹12-20+</span>
                       <span className="text-lg font-semibold text-gray-700">Lakhs</span>
                     </div>
                     <div className="text-[10px] text-gray-500 font-medium tracking-wide">PER ANNUM</div>
@@ -294,7 +322,7 @@ function LandingPage() {
                       isStatsVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
                     }`}>
                       <div className="bg-white px-5 py-2 rounded-full shadow-xl border-2 border-emerald-200">
-                        <span className="text-base font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">4X more</span>
+                        <span className="text-base font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">3-4X more</span>
                       </div>
                     </div>
                   </div>
