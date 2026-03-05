@@ -1,6 +1,7 @@
-import { Microscope, Dna, FlaskConical, Leaf, Users, Award, BookOpen, TrendingUp, CheckCircle, ArrowRight, Sparkles } from 'lucide-react';
+import { Microscope, Dna, FlaskConical, Leaf, Users, Award, BookOpen, TrendingUp, CheckCircle, ArrowRight, Sparkles, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import InteractiveProgramSection from '../components/InteractiveProgramSection';
+import { useState } from 'react';
 
 function LandingPage() {
   return (
@@ -92,6 +93,177 @@ function LandingPage() {
             <div className="group hover:scale-105 transition-transform">
               <div className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">95%</div>
               <div className="text-gray-700 font-medium">Success Rate</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Industry Growth Statistics Section */}
+        <div className="mb-16 sm:mb-20">
+          <div className="text-center mb-8 sm:mb-12 px-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-4 break-words">
+              Preparing for the Future of Biotechnology
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              The biotechnology industry is experiencing unprecedented growth with exceptional career opportunities
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 px-4">
+            {/* Job Growth Card with Curve */}
+            <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 shadow-2xl border border-gray-200 hover:shadow-3xl transition-all">
+              <h3 className="text-lg font-semibold text-gray-800 mb-6">Increasing Demand for Bioinformaticians,</h3>
+              
+              <div className="relative h-96">
+                {/* Info Text Centered */}
+                <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10 flex items-start gap-2">
+                  <div className="bg-gradient-to-br from-teal-400 to-emerald-500 p-2 rounded-lg flex-shrink-0">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-gray-900">13 Lakhs+ Jobs</div>
+                    <div className="text-xs text-gray-600 leading-tight max-w-[200px]">
+                      There will be 13 Lakh Jobs in Biotech by the time you graduate
+                    </div>
+                  </div>
+                </div>
+
+                {/* Graph Container */}
+                <div className="absolute inset-0 pt-20">
+                  <svg className="w-full h-full" viewBox="0 0 500 350" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                      <linearGradient id="curveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#14b8a6" stopOpacity="0.4"/>
+                        <stop offset="100%" stopColor="#14b8a6" stopOpacity="0.05"/>
+                      </linearGradient>
+                    </defs>
+                    
+                    {/* Grid lines */}
+                    <line x1="60" y1="80" x2="460" y2="80" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="4,4"/>
+                    <line x1="60" y1="150" x2="460" y2="150" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="4,4"/>
+                    <line x1="60" y1="220" x2="460" y2="220" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="4,4"/>
+                    <line x1="60" y1="290" x2="460" y2="290" stroke="#e5e7eb" strokeWidth="1" strokeDasharray="4,4"/>
+                    
+                    {/* Y-axis */}
+                    <line x1="60" y1="60" x2="60" y2="290" stroke="#9ca3af" strokeWidth="2"/>
+                    {/* X-axis */}
+                    <line x1="60" y1="290" x2="460" y2="290" stroke="#9ca3af" strokeWidth="2"/>
+                    
+                    {/* Y-axis labels */}
+                    <text x="45" y="295" fontSize="13" fill="#6b7280" textAnchor="end" fontWeight="500">1L</text>
+                    <text x="45" y="225" fontSize="13" fill="#6b7280" textAnchor="end" fontWeight="500">3L</text>
+                    <text x="45" y="155" fontSize="13" fill="#6b7280" textAnchor="end" fontWeight="500">5L</text>
+                    <text x="45" y="85" fontSize="13" fill="#6b7280" textAnchor="end" fontWeight="500">7L</text>
+                    
+                    {/* Smooth curve */}
+                    <path
+                      d="M 80 270 Q 180 240, 260 180 T 440 80"
+                      fill="none"
+                      stroke="#14b8a6"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    
+                    {/* Area under curve */}
+                    <path
+                      d="M 80 270 Q 180 240, 260 180 T 440 80 L 440 290 L 80 290 Z"
+                      fill="url(#curveGradient)"
+                    />
+                    
+                    {/* Data points */}
+                    <circle cx="80" cy="270" r="5" fill="#14b8a6" stroke="white" strokeWidth="2"/>
+                    <circle cx="260" cy="180" r="5" fill="#14b8a6" stroke="white" strokeWidth="2"/>
+                    <circle cx="440" cy="80" r="5" fill="#14b8a6" stroke="white" strokeWidth="2"/>
+                    
+                    {/* X-axis labels */}
+                    <text x="80" y="315" fontSize="13" fill="#6b7280" textAnchor="middle" fontWeight="500">2020</text>
+                    <text x="260" y="315" fontSize="13" fill="#6b7280" textAnchor="middle" fontWeight="500">2024</text>
+                    <text x="440" y="315" fontSize="13" fill="#6b7280" textAnchor="middle" fontWeight="500">2025</text>
+                    
+                    {/* Axis labels */}
+                    <text x="20" y="180" fontSize="11" fill="#9ca3af" textAnchor="middle" transform="rotate(-90 20 180)">Number of Jobs</text>
+                    <text x="260" y="340" fontSize="11" fill="#9ca3af" textAnchor="middle">Year</text>
+                  </svg>
+                </div>
+              </div>
+              
+              <p className="text-xs text-gray-500 mt-4">Source: Microsoft Industry Report 2024</p>
+            </div>
+
+            {/* Salary Comparison Card */}
+            <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 shadow-2xl border border-gray-200 hover:shadow-3xl transition-all">
+              <h3 className="text-lg font-semibold text-gray-800 mb-8">Higher salaries with right skill sets is possible</h3>
+              
+              <div className="relative h-96 flex items-end justify-center gap-12 px-8">
+                {/* Y-axis label */}
+                <div className="absolute left-0 top-12 bottom-16 flex items-center">
+                  <div className="transform -rotate-90 text-xs text-gray-500 whitespace-nowrap font-medium">
+                    Average CTC (₹)
+                  </div>
+                </div>
+
+                {/* Left Bar - Without Skills */}
+                <div className="flex flex-col items-center">
+                  <div className="text-center mb-3">
+                    <div className="flex items-baseline justify-center gap-1">
+                      <span className="text-2xl font-bold text-gray-900">₹2</span>
+                      <span className="text-lg font-semibold text-gray-700">Lakhs</span>
+                    </div>
+                    <div className="text-[10px] text-gray-500 font-medium tracking-wide">PER ANNUM</div>
+                  </div>
+                  <div className="relative w-24 bg-gradient-to-t from-gray-400 via-gray-300 to-gray-200 rounded-t-2xl shadow-lg" style={{height: '140px'}}>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent rounded-t-2xl"></div>
+                  </div>
+                  <div className="mt-4 text-center max-w-[130px]">
+                    <div className="text-xs font-medium text-gray-700 leading-tight">Without Industry skillsets in Biotech</div>
+                  </div>
+                </div>
+
+                {/* Right Bar - With Skills */}
+                <div className="flex flex-col items-center">
+                  <div className="text-center mb-3">
+                    <div className="flex items-baseline justify-center gap-1">
+                      <span className="text-2xl font-bold text-gray-900">₹8</span>
+                      <span className="text-lg font-semibold text-gray-700">Lakhs</span>
+                    </div>
+                    <div className="text-[10px] text-gray-500 font-medium tracking-wide">PER ANNUM</div>
+                  </div>
+                  <div className="relative w-24 bg-gradient-to-t from-emerald-500 via-teal-400 to-teal-300 rounded-t-2xl shadow-xl" style={{height: '300px'}}>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-white/20 rounded-t-2xl"></div>
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                      <div className="bg-white px-5 py-2 rounded-full shadow-xl border-2 border-emerald-200">
+                        <span className="text-base font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">4X more</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-4 text-center max-w-[130px]">
+                    <div className="text-xs font-medium text-gray-700 leading-tight">With right Industry exposure & skillsets</div>
+                  </div>
+                </div>
+              </div>
+              
+              <p className="text-xs text-gray-500 mt-4">Source: Internal Placement Report 2024</p>
+            </div>
+          </div>
+
+          {/* Trusted By Section */}
+          <div className="mt-12 text-center px-4">
+            <p className="text-sm text-gray-500 mb-6 font-medium">TRUSTED BY LEADING ORGANIZATIONS</p>
+            <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-16 opacity-60 hover:opacity-80 transition-opacity">
+              <div className="text-3xl font-bold tracking-wider" style={{fontFamily: 'serif', letterSpacing: '0.1em'}}>
+                <span className="text-gray-700">A</span>
+                <span className="text-gray-600">I</span>
+                <span className="text-gray-700">M</span>
+                <span className="text-gray-600">S</span>
+              </div>
+              <div className="text-xl font-serif text-gray-600" style={{fontFamily: 'Georgia, serif'}}>
+                The Economic Times
+              </div>
+              <div className="text-3xl font-bold text-teal-500 tracking-widest" style={{letterSpacing: '0.15em'}}>
+                CISION
+              </div>
             </div>
           </div>
         </div>
@@ -217,6 +389,48 @@ function LandingPage() {
           </div>
         </div>
 
+        {/* FAQ Section */}
+        <div className="mb-16 sm:mb-20">
+          <div className="text-center mb-8 sm:mb-12 px-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-4 break-words">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+              Got questions? We've got answers
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto space-y-4 px-4">
+            <FAQItem
+              question="What are the prerequisites for enrolling in bioinformatics courses?"
+              answer="Most of our courses are designed for beginners to intermediate learners. Basic knowledge of biology and familiarity with computers is helpful, but not mandatory. For advanced courses like RNA-Seq and DNA-Seq analysis, some programming experience (Python or R) is recommended but we provide foundational modules to help you get started."
+            />
+            <FAQItem
+              question="How long does it take to complete a certification program?"
+              answer="Our certification programs range from 4 to 6 weeks depending on the course. Each program is designed to be flexible, allowing you to learn at your own pace. On average, students dedicate 8-10 hours per week and complete the program within the specified timeframe while balancing their work or studies."
+            />
+            <FAQItem
+              question="Will I get placement assistance after completing the course?"
+              answer="Yes! We provide comprehensive placement assistance including resume building, interview preparation, and connections to our network of biotech companies and research institutions. Our placement team works closely with students to help them secure positions in leading organizations. We also have a dedicated job portal with exclusive opportunities for our alumni."
+            />
+            <FAQItem
+              question="Are the certifications recognized by industry?"
+              answer="Absolutely! Our certifications are recognized by leading biotech companies, pharmaceutical firms, and research institutions across India and globally. We maintain partnerships with industry leaders who value our curriculum and the practical skills our students develop. Many of our alumni have successfully used these certifications to advance their careers."
+            />
+            <FAQItem
+              question="What kind of projects will I work on during the course?"
+              answer="You'll work on real-world projects that mirror actual industry challenges. This includes analyzing genomic datasets, performing RNA-Seq and DNA-Seq analysis, working with biological databases, and developing bioinformatics pipelines. All projects are hands-on and designed to build your portfolio, giving you practical experience that employers value."
+            />
+            <FAQItem
+              question="Do you offer any financial assistance or EMI options?"
+              answer="Yes, we understand that investing in education is a big decision. We offer flexible payment plans including EMI options to make our programs accessible. We also provide scholarships for meritorious students and those from economically disadvantaged backgrounds. Contact our admissions team to learn more about available financial assistance options."
+            />
+            <FAQItem
+              question="Can I access course materials after completion?"
+              answer="Yes! Once you enroll, you get lifetime access to all course materials, including video lectures, assignments, and resources. We also regularly update our content to reflect the latest industry trends and technologies, and you'll have access to these updates at no additional cost. Our alumni community also provides ongoing support and networking opportunities."
+            />
+          </div>
+        </div>
+
         {/* CTA Section */}
         <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 rounded-2xl sm:rounded-3xl p-8 sm:p-12 lg:p-16 text-center text-white shadow-2xl relative overflow-hidden mx-4">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMTRjMy4zMSAwIDYtMi42OSA2LTZzLTIuNjktNi02LTYtNiAyLjY5LTYgNiAyLjY5IDYgNiA2em0wLTRjMS4xIDAgMi0uOSAyLTJzLS45LTItMi0yLTIgLjktMiAyIC45IDIgMiAyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-20"></div>
@@ -315,6 +529,40 @@ function TestimonialCard({ quote, author, role, gradient }: TestimonialCardProps
       <div>
         <div className="font-bold text-gray-900 text-lg">{author}</div>
         <div className="text-sm text-gray-600">{role}</div>
+      </div>
+    </div>
+  );
+}
+
+interface FAQItemProps {
+  question: string;
+  answer: string;
+}
+
+function FAQItem({ question, answer }: FAQItemProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="bg-white rounded-2xl border border-gray-200 shadow-md hover:shadow-lg transition-all overflow-hidden">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+      >
+        <span className="text-lg font-semibold text-gray-900 pr-4">{question}</span>
+        <ChevronDown
+          className={`w-6 h-6 text-purple-600 flex-shrink-0 transition-transform duration-300 ${
+            isOpen ? 'rotate-180' : ''
+          }`}
+        />
+      </button>
+      <div
+        className={`transition-all duration-300 ease-in-out ${
+          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        } overflow-hidden`}
+      >
+        <div className="px-6 pb-5 pt-2">
+          <p className="text-gray-600 leading-relaxed">{answer}</p>
+        </div>
       </div>
     </div>
   );
