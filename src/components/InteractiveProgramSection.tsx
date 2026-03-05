@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { GraduationCap, Briefcase, Users, Lightbulb, Award, BookOpen, Target, Zap, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ProgramItem {
@@ -117,43 +117,9 @@ const programData: ProgramItem[] = [
 
 function InteractiveProgramSection() {
   const [activeProgram, setActiveProgram] = useState<string>('accelerated-masters');
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const currentProgram = programData.find(p => p.id === activeProgram) || programData[0];
-
-  const checkScrollability = () => {
-    const container = scrollContainerRef.current;
-    if (container) {
-      setCanScrollLeft(container.scrollLeft > 0);
-      setCanScrollRight(container.scrollLeft < container.scrollWidth - container.clientWidth);
-    }
-  };
-
-  useEffect(() => {
-    checkScrollability();
-    const container = scrollContainerRef.current;
-    if (container) {
-      container.addEventListener('scroll', checkScrollability);
-      return () => container.removeEventListener('scroll', checkScrollability);
-    }
-  }, []);
-
-  const scrollLeft = () => {
-    const container = scrollContainerRef.current;
-    if (container) {
-      container.scrollBy({ left: -200, behavior: 'smooth' });
-    }
-  };
-
-  const scrollRight = () => {
-    const container = scrollContainerRef.current;
-    if (container) {
-      container.scrollBy({ left: 200, behavior: 'smooth' });
-    }
-  };
 
   const handlePrevProgram = () => {
     const newIndex = Math.max(0, activeIndex - 1);
