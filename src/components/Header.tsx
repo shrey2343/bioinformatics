@@ -324,9 +324,7 @@ function Header() {
                       >
                         ← Back
                       </button>
-                      <Link to="/biotechnology" className="block text-gray-600 hover:text-teal-600 py-2" onClick={() => {setCertDropdown(false); setMobileMenuOpen(false);}}>
-                        Biotechnology
-                      </Link>
+                      
                       <Link to="/genetics" className="block text-gray-600 hover:text-teal-600 py-2" onClick={() => {setCertDropdown(false); setMobileMenuOpen(false);}}>
                         Genetics
                       </Link>
@@ -369,9 +367,7 @@ function Header() {
                       >
                         ← Back
                       </button>
-                      <Link to="/bioinformatics" className="block text-gray-600 hover:text-teal-600 py-2" onClick={() => {setCertDropdown(false); setMobileMenuOpen(false);}}>
-                        Bioinformatics
-                      </Link>
+                     
                       <Link to="/rna-seq" className="block text-gray-600 hover:text-teal-600 py-2" onClick={() => {setCertDropdown(false); setMobileMenuOpen(false);}}>
                         RNA Sequencing
                       </Link>
