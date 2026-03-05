@@ -1,9 +1,35 @@
 import { Microscope, Dna, FlaskConical, Leaf, Users, Award, BookOpen, TrendingUp, CheckCircle, ArrowRight, Sparkles, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import InteractiveProgramSection from '../components/InteractiveProgramSection';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function LandingPage() {
+  const [isStatsVisible, setIsStatsVisible] = useState(false);
+  const statsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsStatsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => {
+      if (statsRef.current) {
+        observer.unobserve(statsRef.current);
+      }
+    };
+  }, []);
+
   return (
     <main>
       {/* Hero Section with Video Background */}
@@ -98,7 +124,7 @@ function LandingPage() {
         </div>
 
         {/* Industry Growth Statistics Section */}
-        <div className="mb-16 sm:mb-20">
+        <div className="mb-16 sm:mb-20" ref={statsRef}>
           <div className="text-center mb-8 sm:mb-12 px-4">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-4 break-words">
               Preparing for the Future of Biotechnology
@@ -115,7 +141,9 @@ function LandingPage() {
               
               <div className="relative h-96">
                 {/* Info Text Centered */}
-                <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10 flex items-start gap-2">
+                <div className={`absolute top-8 left-1/2 transform -translate-x-1/2 z-10 flex items-start gap-2 transition-all duration-700 ${
+                  isStatsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
+                }`}>
                   <div className="bg-gradient-to-br from-teal-400 to-emerald-500 p-2 rounded-lg flex-shrink-0">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -137,6 +165,18 @@ function LandingPage() {
                         <stop offset="0%" stopColor="#14b8a6" stopOpacity="0.4"/>
                         <stop offset="100%" stopColor="#14b8a6" stopOpacity="0.05"/>
                       </linearGradient>
+                      <clipPath id="revealClip">
+                        <rect x="0" y="0" width="500" height="350">
+                          <animate
+                            attributeName="width"
+                            from="0"
+                            to="500"
+                            dur="2s"
+                            begin={isStatsVisible ? "0s" : "indefinite"}
+                            fill="freeze"
+                          />
+                        </rect>
+                      </clipPath>
                     </defs>
                     
                     {/* Grid lines */}
@@ -156,26 +196,28 @@ function LandingPage() {
                     <text x="45" y="155" fontSize="13" fill="#6b7280" textAnchor="end" fontWeight="500">5L</text>
                     <text x="45" y="85" fontSize="13" fill="#6b7280" textAnchor="end" fontWeight="500">7L</text>
                     
-                    {/* Smooth curve */}
-                    <path
-                      d="M 80 270 Q 180 240, 260 180 T 440 80"
-                      fill="none"
-                      stroke="#14b8a6"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    
-                    {/* Area under curve */}
-                    <path
-                      d="M 80 270 Q 180 240, 260 180 T 440 80 L 440 290 L 80 290 Z"
-                      fill="url(#curveGradient)"
-                    />
-                    
-                    {/* Data points */}
-                    <circle cx="80" cy="270" r="5" fill="#14b8a6" stroke="white" strokeWidth="2"/>
-                    <circle cx="260" cy="180" r="5" fill="#14b8a6" stroke="white" strokeWidth="2"/>
-                    <circle cx="440" cy="80" r="5" fill="#14b8a6" stroke="white" strokeWidth="2"/>
+                    <g clipPath="url(#revealClip)">
+                      {/* Smooth curve */}
+                      <path
+                        d="M 80 270 Q 180 240, 260 180 T 440 80"
+                        fill="none"
+                        stroke="#14b8a6"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      
+                      {/* Area under curve */}
+                      <path
+                        d="M 80 270 Q 180 240, 260 180 T 440 80 L 440 290 L 80 290 Z"
+                        fill="url(#curveGradient)"
+                      />
+                      
+                      {/* Data points */}
+                      <circle cx="80" cy="270" r="5" fill="#14b8a6" stroke="white" strokeWidth="2"/>
+                      <circle cx="260" cy="180" r="5" fill="#14b8a6" stroke="white" strokeWidth="2"/>
+                      <circle cx="440" cy="80" r="5" fill="#14b8a6" stroke="white" strokeWidth="2"/>
+                    </g>
                     
                     {/* X-axis labels */}
                     <text x="80" y="315" fontSize="13" fill="#6b7280" textAnchor="middle" fontWeight="500">2020</text>
@@ -206,39 +248,59 @@ function LandingPage() {
 
                 {/* Left Bar - Without Skills */}
                 <div className="flex flex-col items-center">
-                  <div className="text-center mb-3">
+                  <div className={`text-center mb-3 transition-all duration-700 delay-300 ${
+                    isStatsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
+                  }`}>
                     <div className="flex items-baseline justify-center gap-1">
                       <span className="text-2xl font-bold text-gray-900">₹2</span>
                       <span className="text-lg font-semibold text-gray-700">Lakhs</span>
                     </div>
                     <div className="text-[10px] text-gray-500 font-medium tracking-wide">PER ANNUM</div>
                   </div>
-                  <div className="relative w-24 bg-gradient-to-t from-gray-400 via-gray-300 to-gray-200 rounded-t-2xl shadow-lg" style={{height: '140px'}}>
+                  <div 
+                    className="relative w-24 bg-gradient-to-t from-gray-400 via-gray-300 to-gray-200 rounded-t-2xl shadow-lg transition-all duration-1000 ease-out"
+                    style={{
+                      height: isStatsVisible ? '140px' : '0px'
+                    }}
+                  >
                     <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent rounded-t-2xl"></div>
                   </div>
-                  <div className="mt-4 text-center max-w-[130px]">
+                  <div className={`mt-4 text-center max-w-[130px] transition-all duration-700 delay-500 ${
+                    isStatsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  }`}>
                     <div className="text-xs font-medium text-gray-700 leading-tight">Without Industry skillsets in Biotech</div>
                   </div>
                 </div>
 
                 {/* Right Bar - With Skills */}
                 <div className="flex flex-col items-center">
-                  <div className="text-center mb-3">
+                  <div className={`text-center mb-3 transition-all duration-700 delay-300 ${
+                    isStatsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
+                  }`}>
                     <div className="flex items-baseline justify-center gap-1">
                       <span className="text-2xl font-bold text-gray-900">₹8</span>
                       <span className="text-lg font-semibold text-gray-700">Lakhs</span>
                     </div>
                     <div className="text-[10px] text-gray-500 font-medium tracking-wide">PER ANNUM</div>
                   </div>
-                  <div className="relative w-24 bg-gradient-to-t from-emerald-500 via-teal-400 to-teal-300 rounded-t-2xl shadow-xl" style={{height: '300px'}}>
+                  <div 
+                    className="relative w-24 bg-gradient-to-t from-emerald-500 via-teal-400 to-teal-300 rounded-t-2xl shadow-xl transition-all duration-1000 ease-out delay-200"
+                    style={{
+                      height: isStatsVisible ? '300px' : '0px'
+                    }}
+                  >
                     <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-white/20 rounded-t-2xl"></div>
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-700 delay-700 ${
+                      isStatsVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                    }`}>
                       <div className="bg-white px-5 py-2 rounded-full shadow-xl border-2 border-emerald-200">
                         <span className="text-base font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">4X more</span>
                       </div>
                     </div>
                   </div>
-                  <div className="mt-4 text-center max-w-[130px]">
+                  <div className={`mt-4 text-center max-w-[130px] transition-all duration-700 delay-500 ${
+                    isStatsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  }`}>
                     <div className="text-xs font-medium text-gray-700 leading-tight">With right Industry exposure & skillsets</div>
                   </div>
                 </div>
