@@ -16,7 +16,7 @@ function LandingPage() {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.4 }
     );
 
     if (statsRef.current) {
@@ -171,7 +171,7 @@ function LandingPage() {
                             attributeName="width"
                             from="0"
                             to="500"
-                            dur="2s"
+                            dur="4s"
                             begin={isStatsVisible ? "0s" : "indefinite"}
                             fill="freeze"
                           />
@@ -258,7 +258,7 @@ function LandingPage() {
                     <div className="text-[10px] text-gray-500 font-medium tracking-wide">PER ANNUM</div>
                   </div>
                   <div 
-                    className="relative w-24 bg-gradient-to-t from-gray-400 via-gray-300 to-gray-200 rounded-t-2xl shadow-lg transition-all duration-1000 ease-out"
+                    className="relative w-24 bg-gradient-to-t from-gray-400 via-gray-300 to-gray-200 rounded-t-2xl shadow-lg transition-all duration-[2000ms] ease-out"
                     style={{
                       height: isStatsVisible ? '140px' : '0px'
                     }}
@@ -284,13 +284,13 @@ function LandingPage() {
                     <div className="text-[10px] text-gray-500 font-medium tracking-wide">PER ANNUM</div>
                   </div>
                   <div 
-                    className="relative w-24 bg-gradient-to-t from-emerald-500 via-teal-400 to-teal-300 rounded-t-2xl shadow-xl transition-all duration-1000 ease-out delay-200"
+                    className="relative w-24 bg-gradient-to-t from-emerald-500 via-teal-400 to-teal-300 rounded-t-2xl shadow-xl transition-all duration-[2000ms] ease-out delay-200"
                     style={{
                       height: isStatsVisible ? '300px' : '0px'
                     }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-white/20 rounded-t-2xl"></div>
-                    <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-700 delay-700 ${
+                    <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-700 delay-[1400ms] ${
                       isStatsVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
                     }`}>
                       <div className="bg-white px-5 py-2 rounded-full shadow-xl border-2 border-emerald-200">
