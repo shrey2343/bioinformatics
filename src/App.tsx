@@ -15,6 +15,12 @@ import LinuxBioinformaticsPage from './pages/LinuxBioinformaticsPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsConditionsPage from './pages/TermsConditionsPage';
 import CookiePolicyPage from './pages/CookiePolicyPage';
+import PhDSupportPage from './pages/PhDSupportPage';
+import ResearchRNASeqPage from './pages/ResearchRNASeqPage';
+import ResearchDNASeqPage from './pages/ResearchDNASeqPage';
+import CancerGenomicsPage from './pages/CancerGenomicsPage';
+import DeliverablesPage from './pages/DeliverablesPage';
+import InfrastructurePage from './pages/InfrastructurePage';
 
 function App() {
   return (
@@ -27,15 +33,19 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="/biotechnology" element={<GeneticsPage />} />
             <Route path="/genetics" element={<GeneticsPage />} />
             <Route path="/proteomics" element={<ProteomicsPage />} />
-            <Route path="/bioinformatics" element={<RNASeqPage />} />
             <Route path="/rna-seq" element={<RNASeqPage />} />
             <Route path="/dna-seq" element={<DNASeqPage />} />
             <Route path="/bio-python" element={<BioPythonPage />} />
             <Route path="/bio-r" element={<BioRPage />} />
             <Route path="/linux-bioinformatics" element={<LinuxBioinformaticsPage />} />
+            <Route path="/research/phd-support" element={<PhDSupportPage />} />
+            <Route path="/research/rna-seq" element={<ResearchRNASeqPage />} />
+            <Route path="/research/dna-seq" element={<ResearchDNASeqPage />} />
+            <Route path="/research/cancer-genomics" element={<CancerGenomicsPage />} />
+            <Route path="/research/deliverables" element={<DeliverablesPage />} />
+            <Route path="/research/infrastructure" element={<InfrastructurePage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms-conditions" element={<TermsConditionsPage />} />
             <Route path="/cookie-policy" element={<CookiePolicyPage />} />

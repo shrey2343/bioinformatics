@@ -2,6 +2,10 @@ import { Dna, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from
 import { Link } from 'react-router-dom';
 
 function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
@@ -39,16 +43,16 @@ function Footer() {
             <h4 className="text-white font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="hover:text-teal-500 transition-colors">Home</Link>
+                <Link to="/" onClick={scrollToTop} className="hover:text-teal-500 transition-colors">Home</Link>
               </li>
               <li>
-                <Link to="/about" className="hover:text-teal-500 transition-colors">About Us</Link>
+                <Link to="/about" onClick={scrollToTop} className="hover:text-teal-500 transition-colors">About Us</Link>
               </li>
               <li>
-                <Link to="/blog" className="hover:text-teal-500 transition-colors">Blog</Link>
+                <Link to="/blog" onClick={scrollToTop} className="hover:text-teal-500 transition-colors">Blog</Link>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-teal-500 transition-colors">Contact</Link>
+                <Link to="/contact" onClick={scrollToTop} className="hover:text-teal-500 transition-colors">Contact</Link>
               </li>
             </ul>
           </div>
@@ -58,16 +62,16 @@ function Footer() {
             <h4 className="text-white font-semibold mb-4">Programs</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/biotechnology" className="hover:text-teal-500 transition-colors">Biotechnology</Link>
+                <Link to="/genetics" onClick={scrollToTop} className="hover:text-teal-500 transition-colors">Genetics</Link>
               </li>
               <li>
-                <Link to="/genetics" className="hover:text-teal-500 transition-colors">Genetics</Link>
+                <Link to="/proteomics" onClick={scrollToTop} className="hover:text-teal-500 transition-colors">Proteomics</Link>
               </li>
               <li>
-                <Link to="/bioinformatics" className="hover:text-teal-500 transition-colors">Bioinformatics</Link>
+                <Link to="/rna-seq" onClick={scrollToTop} className="hover:text-teal-500 transition-colors">RNA Sequencing</Link>
               </li>
               <li>
-                <Link to="/proteomics" className="hover:text-teal-500 transition-colors">Proteomics</Link>
+                <Link to="/dna-seq" onClick={scrollToTop} className="hover:text-teal-500 transition-colors">DNA Sequencing</Link>
               </li>
             </ul>
           </div>
@@ -110,13 +114,13 @@ function Footer() {
               © 2026 Biotech. All rights reserved.
             </p>
             <div className="flex flex-wrap gap-4 sm:gap-6 text-sm justify-center">
-              <Link to="/privacy-policy" className="hover:text-teal-500 transition-colors">
+              <Link to="/privacy-policy" onClick={scrollToTop} className="hover:text-teal-500 transition-colors">
                 Privacy Policy
               </Link>
-              <Link to="/terms-conditions" className="hover:text-teal-500 transition-colors">
+              <Link to="/terms-conditions" onClick={scrollToTop} className="hover:text-teal-500 transition-colors">
                 Terms & Conditions
               </Link>
-              <Link to="/cookie-policy" className="hover:text-teal-500 transition-colors">
+              <Link to="/cookie-policy" onClick={scrollToTop} className="hover:text-teal-500 transition-colors">
                 Cookie Policy
               </Link>
             </div>

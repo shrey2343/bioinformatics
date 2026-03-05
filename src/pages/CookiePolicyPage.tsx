@@ -2,7 +2,7 @@ import { Cookie } from 'lucide-react';
 
 function CookiePolicyPage() {
   return (
-    <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pt-32">
       <div className="text-center mb-12">
         <Cookie className="w-16 h-16 text-teal-600 mx-auto mb-4" />
         <h1 className="text-4xl font-bold text-gray-900 mb-4">Cookie Policy</h1>

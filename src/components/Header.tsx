@@ -1,5 +1,5 @@
 import { Dna, ChevronDown, GraduationCap, Microscope, FlaskConical, Activity, Code, Database, Terminal, FileSearch, Beaker, Users, FileText, Server, Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 function Header() {
@@ -8,10 +8,32 @@ function Header() {
   const [selectedCategory, setSelectedCategory] = useState<'biotechnology' | 'bioinformatics' | 'research' | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
+  // Pages that have video background hero sections
+  const pagesWithVideoBackground = [
+    '/',
+    '/genetics',
+    '/proteomics',
+    '/rna-seq',
+    '/dna-seq',
+    '/bio-python',
+    '/bio-r',
+    '/linux-bioinformatics',
+    '/research/phd-support',
+    '/research/rna-seq',
+    '/research/dna-seq',
+    '/research/cancer-genomics',
+    '/research/deliverables',
+    '/research/infrastructure'
+  ];
+
+  const hasVideoBackground = pagesWithVideoBackground.includes(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      // Check if we're past the hero section (approximately 400px for hero sections)
+      setIsScrolled(window.scrollY > 400);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -22,19 +44,24 @@ function Header() {
     setSelectedCategory(category);
   };
 
+  // Determine if header should use light text (for dark backgrounds)
+  const useLightText = hasVideoBackground && !isScrolled;
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white shadow-md' 
-        : 'bg-white/10 backdrop-blur-md border-b border-white/20 shadow-lg'
+      hasVideoBackground
+        ? (isScrolled 
+            ? 'bg-white shadow-md' 
+            : 'bg-black/40 backdrop-blur-lg border-b border-white/30 shadow-2xl')
+        : 'bg-white shadow-md'
     }`}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <Dna className={`w-8 h-8 transition-colors ${isScrolled ? 'text-teal-600' : 'text-white'}`} />
+            <Dna className={`w-8 h-8 transition-colors ${useLightText ? 'text-white' : 'text-teal-600'}`} />
             <h1 className="text-2xl font-bold">
-              <span className={`transition-colors ${isScrolled ? 'text-gray-900' : 'text-white'}`}>Bio</span>
-              <span className={`transition-colors ${isScrolled ? 'text-teal-600' : 'text-teal-300'}`}>tech</span>
+              <span className={`transition-colors ${useLightText ? 'text-white' : 'text-gray-900'}`}>Bio</span>
+              <span className={`transition-colors ${useLightText ? 'text-teal-300' : 'text-teal-600'}`}>tech</span>
             </h1>
           </Link>
           {/* Desktop Navigation */}
@@ -48,9 +75,9 @@ function Header() {
               }}
             >
               <div className={`flex items-center gap-1 cursor-pointer transition-colors ${
-                isScrolled 
-                  ? 'text-gray-700 hover:text-teal-600' 
-                  : 'text-white hover:text-teal-300'
+                useLightText 
+                  ? 'text-white hover:text-teal-300' 
+                  : 'text-gray-700 hover:text-teal-600'
               }`}>
                 <span>Certification Program</span>
                 <ChevronDown className="w-4 h-4" />
@@ -101,13 +128,6 @@ function Header() {
                         ← Back
                       </button>
                       <div className="grid grid-cols-2 gap-4">
-                        <Link to="/biotechnology" className="flex gap-3 p-4 rounded-lg hover:bg-teal-50 group" onClick={() => setCertDropdown(false)}>
-                          <GraduationCap className="w-6 h-6 text-gray-700 group-hover:text-teal-600" />
-                          <div>
-                            <h3 className="font-semibold text-gray-900 mb-1">Biotechnology</h3>
-                            <p className="text-sm text-gray-600">Master biotechnology fundamentals</p>
-                          </div>
-                        </Link>
                         <Link to="/genetics" className="flex gap-3 p-4 rounded-lg hover:bg-teal-50 group" onClick={() => setCertDropdown(false)}>
                           <Dna className="w-6 h-6 text-gray-700 group-hover:text-teal-600" />
                           <div>
@@ -180,13 +200,6 @@ function Header() {
                         ← Back
                       </button>
                       <div className="grid grid-cols-3 gap-4">
-                        <Link to="/bioinformatics" className="flex gap-3 p-4 rounded-lg hover:bg-teal-50 group" onClick={() => setCertDropdown(false)}>
-                          <Database className="w-6 h-6 text-gray-700 group-hover:text-teal-600" />
-                          <div>
-                            <h3 className="font-semibold text-gray-900 mb-1">Bioinformatics</h3>
-                            <p className="text-sm text-gray-600">Data analysis</p>
-                          </div>
-                        </Link>
                         <Link to="/rna-seq" className="flex gap-3 p-4 rounded-lg hover:bg-teal-50 group" onClick={() => setCertDropdown(false)}>
                           <Activity className="w-6 h-6 text-gray-700 group-hover:text-teal-600" />
                           <div>
@@ -235,9 +248,9 @@ function Header() {
               onMouseLeave={() => setCompanyDropdown(false)}
             >
               <div className={`flex items-center gap-1 cursor-pointer transition-colors ${
-                isScrolled 
-                  ? 'text-gray-700 hover:text-teal-600' 
-                  : 'text-white hover:text-teal-300'
+                useLightText 
+                  ? 'text-white hover:text-teal-300' 
+                  : 'text-gray-700 hover:text-teal-600'
               }`}>
                 <span>Company</span>
                 <ChevronDown className="w-4 h-4" />
@@ -258,9 +271,9 @@ function Header() {
             </div>
 
             <button className={`px-6 py-2 rounded-lg font-medium transition-all ${
-              isScrolled
-                ? 'bg-teal-500 hover:bg-teal-600 text-white'
-                : 'bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30'
+              useLightText
+                ? 'bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border border-white/30'
+                : 'bg-teal-500 hover:bg-teal-600 text-white'
             }`}>
               Apply Here
             </button>
@@ -271,9 +284,9 @@ function Header() {
       {/* Mobile Menu Button */}
       <button 
         className={`lg:hidden fixed top-6 right-4 p-2 rounded-lg transition-colors z-50 ${
-          isScrolled 
-            ? 'text-gray-700 hover:bg-gray-100' 
-            : 'text-white hover:bg-white/10'
+          useLightText 
+            ? 'text-white hover:bg-white/10' 
+            : 'text-gray-700 hover:bg-gray-100'
         }`}
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
       >

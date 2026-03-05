@@ -3,7 +3,7 @@ import HeroSection from '../components/HeroSection';
 
 function AboutPage() {
   return (
-    <main>
+    <main className="pt-16">
       <HeroSection
         title="About Us"
         subtitle="Learn about our story and our mission statement"
