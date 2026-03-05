@@ -1,5 +1,6 @@
 import { Microscope, Dna, FlaskConical, Leaf, Users, Award, BookOpen, TrendingUp, CheckCircle, ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import InteractiveProgramSection from '../components/InteractiveProgramSection';
 
 function LandingPage() {
   return (
@@ -135,6 +136,8 @@ function LandingPage() {
             </div>
           </div>
         </div>
+
+        <InteractiveProgramSection />
 
         {/* Popular Programs Section */}
         <div className="mb-16 sm:mb-20">
